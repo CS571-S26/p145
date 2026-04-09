@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div>
-      <h1>Welcome to Food Quest!</h1>
+      <h1>Welcome to The Great Snack Quest!</h1>
       <p>Spin the wheel to discover your next campus meal adventure.</p>
       <SpinWheel />
       <div className="mt-4">
