@@ -4,9 +4,9 @@
   "private": true,
   "homepage": "https://cs571-s26.github.io/p145/",
   "dependencies": {
-    "bootstrap": "^5.0.0",
+    "bootstrap": "^5.3.8",
     "react": "^18.0.0",
-    "react-bootstrap": "^2.0.0",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "react-scripts": "5.0.1"

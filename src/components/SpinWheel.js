@@ -11,14 +11,17 @@ const categories = [
   "Quick Bite"
 ];
 
-function SpinWheel() {
+
+function SpinWheel({ onSelect }) {
   const [selected, setSelected] = useState(null);
   const [show, setShow] = useState(false);
 
   const spin = () => {
     const idx = Math.floor(Math.random() * categories.length);
-    setSelected(categories[idx]);
+    const category = categories[idx];
+    setSelected(category);
     setShow(true);
+    if (onSelect) onSelect(category);
   };
 
   return (
@@ -31,7 +34,7 @@ function SpinWheel() {
           <Modal.Title>Category Selected!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h3>{selected}</h3>
+          <h2>🎯 You got: {selected}</h2>
           <p>Check out featured spots in this category on the Explore page!</p>
         </Modal.Body>
       </Modal>
