@@ -2,7 +2,7 @@
   "name": "finalProject",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://akshayasoma.github.io/finalProject",
+  "homepage": "https://cs571-s26.github.io/p145/",
   "dependencies": {
     "bootstrap": "^5.0.0",
     "react": "^18.0.0",
