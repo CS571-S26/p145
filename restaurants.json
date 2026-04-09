@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Colectivo Coffee",
+    "category": "coffee",
+    "priceRange": "$$",
+    "vibe": "study spot",
+    "description": "Busy Bascom Hill hub with a great terrace for summer study sessions."
+  },
+  {
+    "id": 2,
+    "name": "Rising Sons Deli",
+    "category": "budget eats",
+    "priceRange": "$",
+    "vibe": "quick bite",
+    "description": "Authentic Lao and Thai dishes that won't break your student budget."
+  },
+  {
+    "id": 3,
+    "name": "Parthenon Gyros",
+    "category": "late-night food",
+    "priceRange": "$",
+    "vibe": "hangout",
+    "description": "A State Street landmark famous for gyros and its rooftop view."
+  },
+  {
+    "id": 4,
+    "name": "Cento",
+    "category": "upscale eats",
+    "priceRange": "$$$",
+    "vibe": "date spot",
+    "description": "Modern Italian dining with an open kitchen near the Overture Center."
+  },
+  {
+    "id": 5,
+    "name": "Insomnia Cookies",
+    "category": "dessert",
+    "priceRange": "$",
+    "vibe": "late-night food",
+    "description": "Warm, delicious cookies delivered until the early hours of the morning."
+  }
+]
