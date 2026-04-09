@@ -34,7 +34,7 @@ function SpinWheel({ onSelect }) {
           <Modal.Title>Category Selected!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h2>🎯 You got: {selected}</h2>
+          <h2>You got: {selected}</h2>
           <p>Check out featured spots in this category on the Explore page!</p>
         </Modal.Body>
       </Modal>

@@ -31,9 +31,9 @@ function CategoryList() {
     return priceMatch && vibeMatch;
   });
 
-  if (loading) {
-    return <div className="text-center my-5"><Spinner animation="border" /></div>;
-  }
+
+  // No loading animation; just render nothing while loading
+  if (loading) return null;
 
   return (
     <div>
