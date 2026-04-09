@@ -3,7 +3,6 @@ import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Explore from "./pages/Explore";
 import Profile from "./pages/Profile";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
-      <Footer />
     </Router>
   );
 }

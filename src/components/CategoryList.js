@@ -1,40 +1,22 @@
-import React, { useState } from "react";
-import RestaurantCard from "./RestaurantCard";
-import { Button, Form, Row, Col } from "react-bootstrap";
 
-const sampleRestaurants = [
-  {
-    name: "Cafe 1848",
-    category: "Coffee",
-    description: "Cozy spot for coffee and pastries.",
-    price: "$",
-    rating: 4.5,
-    vibe: "Study Spot",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    name: "Night Owl Diner",
-    category: "Late-night Food",
-    description: "Open late with classic comfort food.",
-    price: "$$",
-    rating: 4.2,
-    vibe: "Hangout",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    name: "Budget Bites",
-    category: "Budget Eats",
-    description: "Affordable meals for students.",
-    price: "$",
-    rating: 4.0,
-    vibe: "Quick Bite",
-    image: "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80"
-  }
-];
+import React, { useState, useEffect } from "react";
+import RestaurantCard from "./RestaurantCard";
+import { Form, Row, Col, Spinner } from "react-bootstrap";
 
 function CategoryList() {
   const [filter, setFilter] = useState({ price: "", vibe: "" });
-  const [restaurants, setRestaurants] = useState(sampleRestaurants);
+  const [restaurants, setRestaurants] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/src/data/restaurants.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setRestaurants(data);
+        setLoading(false);
+      });
+  }, []);
+
 
   const handleChange = (e) => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
@@ -42,10 +24,14 @@ function CategoryList() {
 
   const filtered = restaurants.filter((r) => {
     return (
-      (!filter.price || r.price === filter.price) &&
-      (!filter.vibe || r.vibe === filter.vibe)
+      (!filter.price || r.priceRange === filter.price) &&
+      (!filter.vibe || r.vibe.toLowerCase() === filter.vibe.toLowerCase())
     );
   });
+
+  if (loading) {
+    return <div className="text-center my-5"><Spinner animation="border" /></div>;
+  }
 
   return (
     <div>
@@ -56,21 +42,24 @@ function CategoryList() {
               <option value="">All Prices</option>
               <option value="$">$</option>
               <option value="$$">$$</option>
+              <option value="$$$">$$$</option>
             </Form.Select>
           </Col>
           <Col md={4}>
             <Form.Select name="vibe" value={filter.vibe} onChange={handleChange}>
               <option value="">All Vibes</option>
-              <option value="Study Spot">Study Spot</option>
-              <option value="Hangout">Hangout</option>
-              <option value="Quick Bite">Quick Bite</option>
+              <option value="study spot">Study Spot</option>
+              <option value="hangout">Hangout</option>
+              <option value="quick bite">Quick Bite</option>
+              <option value="date spot">Date Spot</option>
+              <option value="late-night food">Late-night Food</option>
             </Form.Select>
           </Col>
         </Row>
       </Form>
       <Row>
-        {filtered.map((r, idx) => (
-          <Col md={4} key={idx} className="mb-4">
+        {filtered.map((r) => (
+          <Col md={4} key={r.id} className="mb-4">
             <RestaurantCard {...r} />
           </Col>
         ))}
