@@ -18,15 +18,15 @@ function RestaurantCard({ name, category, description, priceRange, rating, vibe,
         <Card.Text>{description}</Card.Text>
         <div>Price: {priceRange} {rating && `| Rating: ${rating}`} | Vibe: {vibe}</div>
         <Button variant={added ? "success" : "primary"} onClick={handleTry} disabled={added} className="mt-2">
-          {added ? "Added to Food Quest" : "Try It"}
+          {added ? "Added to The Great Snack Quest" : "Try It"}
         </Button>
       </Card.Body>
       <Modal show={show} onHide={() => setShow(false)} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Added to Food Quest!</Modal.Title>
+          <Modal.Title>Added to The Great Snack Quest!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>{name} has been added to your Food Quest list.</p>
+          <p>{name} has been added to your Great Snack Quest list.</p>
         </Modal.Body>
       </Modal>
     </Card>
