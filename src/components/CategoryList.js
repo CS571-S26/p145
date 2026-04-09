@@ -9,9 +9,10 @@ function CategoryList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/src/data/restaurants.json")
+    fetch("/restaurants.json")
       .then((res) => res.json())
       .then((data) => {
+        console.log("Loaded restaurants:", data);
         setRestaurants(data);
         setLoading(false);
       });
@@ -23,10 +24,11 @@ function CategoryList() {
   };
 
   const filtered = restaurants.filter((r) => {
-    return (
-      (!filter.price || r.priceRange === filter.price) &&
-      (!filter.vibe || r.vibe.toLowerCase() === filter.vibe.toLowerCase())
-    );
+    // If no filters, show all
+    if (!filter.price && !filter.vibe) return true;
+    const priceMatch = !filter.price || r.priceRange === filter.price;
+    const vibeMatch = !filter.vibe || (r.vibe && r.vibe.toLowerCase() === filter.vibe.toLowerCase());
+    return priceMatch && vibeMatch;
   });
 
   if (loading) {
